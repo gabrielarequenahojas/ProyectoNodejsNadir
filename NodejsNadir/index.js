@@ -1,12 +1,15 @@
 const express = require('express');
+var exphbs  = require('express-handlebars');
+var fs = require('fs');
+var https = require('http');
+
 const path = require('path');
 const PORT = process.env.PORT || 5000 ;
 
 var fortune = require('./lib/fortune.js');
-var exphbs  = require('express-handlebars');
+
 const knex = require('./db/knex');
-var fs = require('fs');
-var https = require('http');
+
 
 var app = express();
 
