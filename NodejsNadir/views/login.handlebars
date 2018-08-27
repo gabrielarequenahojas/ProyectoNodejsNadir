@@ -1,13 +1,35 @@
-<h2>Sign up</h2>
+{{#section 'head'}}
 
-<form action="/process?form=login" method="POST">  
-  <input type="hidden" name="_csrf" value="{{csrf}}">  
-  <label for="fieldName">Name</label>
-  <input type="text"  id="fieldName" name="name">
-  <br/>
-  <label for="fieldEmail">Email</label>
-    <input type="email" required id="fieldName" name="email">
-  <br/>
-    <button type="submit" class="btn btn-default">Register</button>
+<link rel="stylesheet" href="css/bienvenidos.css" />
 
+{{/section}}
+
+
+    
+    
+<br />
+
+ <form action="/bienvenidos" method="post" id="targetForm" name="">
+  <div class="imgcontainer">
+      <img src="recursos/imagenes/logoJS.png" alt="Logo"  class="img-rounded rotate"/>
+  </div>
+
+  <div class="contenedor">
+    <h1>INICIA SESIÓN EN NADIR</h1>
+       <br/>
+      
+    <input id="nick" name="nick" type="text" placeholder="INGRESE SU NICK"  required>
+
+      <br/>
+      <input id="clave" name="clave" type="password" placeholder="INGRESE SU CLAVE"  required>
+
+      <br/>
+    
+      <a href="" id="entrar" class=""> ENTRAR </a>
+      <hr/>
+  
+      <a href="creaCuenta" id="registrarse" class=""> REG&Iacute;STRARSE</a>
+  </div>
+
+ 
 </form>
