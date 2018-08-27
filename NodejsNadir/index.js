@@ -18,7 +18,8 @@ var app = express();
 app.use(bodyParser.urlencoded({extended : true}));
 app.disable('x-powered-by');
 //archivos estáticos
-app.use(express.static(path.join(__dirname,'/public')));
+app.use(express.static(__dirname + '/public'));
+
 // call routers
 app.use('/',routes);
 //app.use('/users',users);
@@ -79,6 +80,15 @@ app.get('/conocenos', function(req, res){
     res.render('conocenos');
 
 });
+
+/*CREA CUENTA*/
+
+app.get('/creaCuenta', function(req, res){
+    res.render('creaCuenta');
+
+});
+
+
 
 app.get('/user', function(req,res){
   knex('usuarios')
