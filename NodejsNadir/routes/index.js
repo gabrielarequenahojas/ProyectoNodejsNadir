@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var fortune = require('../lib/fortune.js');
-
+var fs = require('fs');
+var https = require('http');
 // index home
-router.get('/', (req, res) => res.render('home'));
+//router.get('/', (req, res) => res.render('home'));
+
 
 //login route
 router.get('/login', (req, res) => res.render('login', {csrf: 'abc'}));
