@@ -1,30 +1,36 @@
 const express = require('express');
+const PORT = process.env.PORT || 5000 ;
+const knex = require('./db/knex');
+const path = require('path');
+
 var exphbs  = require('express-handlebars');
+var express_handlebars_sections = require('express-handlebars-sections');
 var fs = require('fs');
 var https = require('http');
-
-const path = require('path');
-const PORT = process.env.PORT || 5000 ;
-
+//body.parse
+var bodyParser = require('body-parser');
 var fortune = require('./lib/fortune.js');
-
-const knex = require('./db/knex');
-
-
-var app = express();
-
-app.engine('handlebars', 
-           exphbs({defaultLayout: 'main'}));
-
-app.set('view engine', 'handlebars');
-
 //add modules routers
 var routes = require('./routes/index.js');
 //var users = require('./routes/users.js');
+var app = express();
 
-//body.parse
-var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended : true}));
+app.disable('x-powered-by');
+//archivos estáticos
+app.use(express.static(path.join(__dirname,'/public')));
+// call routers
+app.use('/',routes);
+//app.use('/users',users);
+
+var handlebars = exphbs.create({
+    defaultLayout:'main.handlebars'
+});
+
+express_handlebars_sections(handlebars);
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
 
 app.post('/process', function(req,res){
   console.log('formulario:'+ req.query.form);
@@ -32,13 +38,6 @@ app.post('/process', function(req,res){
   console.log('nombre'+ req.body.email);
 });
 
-
-//archivos estáticos
-app.use(express.static(path.join(__dirname,'/public')));
-
-// call routers
-app.use('/',routes);
-//app.use('/users',users);
 
 function serveStaticFile(res, path, contentType, responseCode) {
     if(!responseCode) responseCode = 200;
@@ -54,6 +53,7 @@ function serveStaticFile(res, path, contentType, responseCode) {
     });
 }
 
+/*INDEX HTML*/
 app.get('/', function(req, res){
     res.redirect(303, '/index.html');
 });
@@ -64,6 +64,21 @@ app.get('/index.html', function(req, res){
     serveStaticFile(res, '/views/index.html', 'text/html');
 });
 
+
+/*BIBLIOTECA VIDEOS*/
+
+app.get('/bibliotecaVideos', function(req, res){
+    res.render('bibliotecaVideos');
+
+});
+
+
+/*CONOCENOS*/
+
+app.get('/conocenos', function(req, res){
+    res.render('conocenos');
+
+});
 
 app.get('/user', function(req,res){
   knex('usuarios')
