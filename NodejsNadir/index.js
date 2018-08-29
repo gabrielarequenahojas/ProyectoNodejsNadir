@@ -96,6 +96,13 @@ app.get('/terminosCondiciones', function(req, res){
 
 });
 
+/*administradorVideos*/
+
+app.get('/administradorVideos', function(req, res){
+    res.render('administradorVideos');
+
+});
+
 
 app.get('/user', function(req,res){
   knex('usuarios')

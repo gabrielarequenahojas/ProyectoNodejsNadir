@@ -1,0 +1,142 @@
+<!---//////////////////////////////////////////////////////////////////////////////////-->
+
+     <!-- Maquetación administración Tabla -->
+    <div class="w3-container">
+    <div class="w3-responsive">
+
+        <h1> ADMINISTRACI&Oacute;N DE VIDEOS </h1>
+
+
+        <table class="w3-table-all" id="demo">
+            <thead>
+                <tr>
+                    <th> C&Oacute;DIGO </th>
+                    <th> T&Iacute;TULO </th>
+                    <th> DESCRIPCI&Oacute;N </th>
+                    <th> CR&Eacute;DITOS </th>
+                    <th>URL</th>
+                    <th>PORTADA</th>
+                    <th> EDITAR </th>
+                    <th> ELIMINAR </th>
+                </tr>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</div>
+</div>
+  <!-- Maquetación administración Tabla --> 
+<br>
+   <div class="container">    
+    
+           <button type="button" id="nuevo" class="btn btn-info">NUEVO</button>
+            <button type="button" id="guardar" class="btn btn-info">GUARDAR</button>
+            <button type="button" id="cancelar" class="btn btn-info">CANCELAR</button>
+  
+            <button type="button" id="exportar" class="btn btn-info">EXPORTAR</button>
+        </div>
+        
+
+   <!---//////////////////////////////////////////////////////////////////////////////////-->
+   <br>
+   <!-- Maquetación MENU OPCIONES --> 
+<div class="container">
+   <div>
+        <form method="post" role="form" id="register-form" autocomplete="off" action="submit.html">
+            
+         <div class="container"> 
+        <div class="col-md-3 col-md-offset-3 "> 
+            <h3>MEN&Uacute; DE OPCIONES</h3>  
+           </div>
+          
+        <div id="tabs" >
+             <div class="col-md-6 col-md-offset-3 ">
+           
+            <a href="#" tabindex="0">Videos</a>
+            <!--<a href="#" tabindex="1">Preguntas</a>-->
+           <!--<a href="#" tabindex="2">Preguntas</a> -->
+        </div>         
+        </div>
+        </div>
+           <!---//////////////////////////////////////////////////////////////////////////////////-->  
+       <div class="container">       
+        <div id="tab-0" class="tab" style="display: none;">
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">C&oacute;digo: </label>
+                    <input id="codigo" class="form-control" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">T&iacute;tulo: </label>
+                    <input id="titulo" type="text" class="form-control" placeholder=" ">
+                    <span class="help-block" id="error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">Descripci&oacute;n: </label>
+                    <input id="descripcion" type="text" class="form-control" placeholder="">
+                    <span class="help-block" id="error"></span>
+                </div>
+            </div>
+            
+             <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">Cr&eacute;ditos: </label>
+                    <input id="creditos" type="text" class="form-control" placeholder="">
+                    <span class="help-block" id="error"></span>
+                </div>
+            </div>
+   
+
+    <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">URL: </label>
+                    <input id="url" type="text" class="form-control" placeholder="">
+                    <span class="help-block" id="error"></span>
+                </div>
+            </div>
+
+
+
+    <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 ">
+                    <label for="name">Portada: </label>
+                    <input id="portada" type="text" class="form-control" placeholder="">
+                    <span class="help-block" id="error"></span>
+                </div>
+            </div>
+                  
+        </div>
+         
+              
+         <!-- construyendo pregunta-->   
+          <div class="col-md-6 col-md-offset-3 ">   
+            <div id="tab-1" class="tab hid" style="display: none;">
+                <input type="button" id="btnNuevaPregunta" class="btn btn-top" value="Nueva pregunta"/>
+
+                 <!-- para eliminar todas las preguntas-->   
+               <!--         <input type="button" id="btnEliminarPregunta" value="Eliminar Preguntas" class="btn btn-top"/-->
+                <div id="pregunta" ></div>            
+            </div>
+        </div>
+               
+      </div>   
+  </form>
+         <br />
+    <br />
+        
+        <br />
+		<br />
+      
+        
+</div>
+		   <!-- Maquetación MENU OPCIONES --> 
+    
+   <!---//////////////////////////////////////////////////////////////////////////////////-->
+
+	
