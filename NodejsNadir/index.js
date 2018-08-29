@@ -88,6 +88,12 @@ app.get('/creaCuenta', function(req, res){
 
 });
 
+/*terminos y Condiciones*/
+
+app.get('/terminosCondiciones', function(req, res){
+    res.render('terminosCondiciones');
+
+});
 
 
 app.get('/user', function(req,res){

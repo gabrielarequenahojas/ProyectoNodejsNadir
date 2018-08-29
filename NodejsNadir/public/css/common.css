@@ -14,7 +14,13 @@
 
 
 
-/**/
+/*terminos y condiciones*/
+
+
+.terminos {
+  padding: 10px 20px 30px 40px;
+  }
+  /*terminos y condiciones*/
 
 }
 
@@ -404,3 +410,15 @@ th, td {
 
 tr:hover{background-color:rgba(0, 0, 0, 0.20)}
 /*table*/
+
+h1{
+  
+   color:#572364;
+}
+
+
+footer{
+  
+   color:#572364;
+   font-family: Century Gothic;
+}

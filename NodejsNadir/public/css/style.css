@@ -114,8 +114,8 @@ html {
 /**************************************************/
 /*contenedor central */
 body {
-    font-family: Gorditas; 
-    font-size: 16px; 
+    font-family: Century Gothic; 
+    font-size: 18px; 
     background: #ffffff;
 	font-weight: 900;
 	color: orange;
@@ -390,7 +390,7 @@ float: inherit;
 	min-height: 1px;
 	padding-left: 15px;
 	padding-right: 15px;
-	font-family: "Gorditas-Regular";
+	font-family: "Arial";
 }
 .col-xs-1,
 .col-xs-2,
