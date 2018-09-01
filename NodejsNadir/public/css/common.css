@@ -37,6 +37,27 @@
     cursor: pointer;
 }
 
+.button {
+	padding: 10px;
+    border: none;
+    color: white;
+   text-align: center;
+    text-decoration: none;
+    display: inline-block;
+     font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+
+
+
+.button2:hover {
+    box-shadow: 15px 15px 15px 15px rgba(0,0,0,0.24),15px 15px 15px 15px rgba(0,0,0,0.19);
+}
+
 .hid {
     display:none;
     border:1px solid #f9f9f9;
