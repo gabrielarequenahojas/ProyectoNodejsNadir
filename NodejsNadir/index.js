@@ -2,6 +2,7 @@ const express = require('express');
 const PORT = process.env.PORT || 5000 ;
 const knex = require('./db/knex');
 const path = require('path');
+const pg = require('pg');
 
 var exphbs  = require('express-handlebars');
 var express_handlebars_sections = require('express-handlebars-sections');
@@ -14,6 +15,8 @@ var fortune = require('./lib/fortune.js');
 var routes = require('./routes/index.js');
 //var users = require('./routes/users.js');
 var app = express();
+
+pg.defaults.ssl = true;
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.disable('x-powered-by');
@@ -111,9 +114,8 @@ app.get('/administradorVideos', function(req, res){
 
 });
 
-
 app.get('/user', function(req,res){
-  knex('usuarios')
+  knex('usuario')
     .select()
     .then( objCollectUsers => {
        res.render('user/index', {objUsers: objCollectUsers});
