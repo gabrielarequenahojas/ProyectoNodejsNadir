@@ -1,0 +1,98 @@
+CREATE SEQUENCE public.video_seq;
+
+CREATE TABLE IF NOT EXISTS public.video (
+  id INT NOT NULL DEFAULT NEXTVAL ('public.video_seq'),
+  titulo VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(200) NOT NULL,
+  creditos VARCHAR(200) NOT NULL,
+  url_video VARCHAR(200) NOT NULL,
+  url_portada VARCHAR(200) NOT NULL,
+  PRIMARY KEY (id))
+;
+
+CREATE SEQUENCE public.pregunta_seq;
+
+CREATE TABLE IF NOT EXISTS public.pregunta (
+  id INT NOT NULL DEFAULT NEXTVAL ('public.pregunta_seq'),
+  video_id INT NOT NULL,
+  contenido VARCHAR(200) NOT NULL,
+  url_video VARCHAR(200) NOT NULL,
+  PRIMARY KEY (id)
+ ,
+  CONSTRAINT fk_pregunta_video1
+    FOREIGN KEY (video_id)
+    REFERENCES public.video (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+CREATE INDEX fk_pregunta_video1_idx ON public.pregunta (video_id ASC);
+
+CREATE SEQUENCE public.opcion_seq;
+
+CREATE TABLE IF NOT EXISTS public.opcion (
+  id INT NOT NULL DEFAULT NEXTVAL ('public.opcion_seq'),
+  pregunta_id INT NOT NULL,
+  id_imagen VARCHAR(200) NOT NULL,
+  valida SMALLINT NOT NULL,
+  PRIMARY KEY (id)
+ ,
+  CONSTRAINT fk_opcion_pregunta1
+    FOREIGN KEY (pregunta_id)
+    REFERENCES public.pregunta (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+CREATE INDEX fk_opcion_pregunta1_idx ON public.opcion (pregunta_id ASC);
+
+CREATE SEQUENCE public.tipo_usuario_seq;
+
+CREATE TABLE IF NOT EXISTS public.tipo_usuario (
+  id INT NOT NULL DEFAULT NEXTVAL ('public.tipo_usuario_seq'),
+  descripcion VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id))
+;
+
+CREATE SEQUENCE public.usuario_seq;
+
+CREATE TABLE IF NOT EXISTS public.usuario (
+  id INT NOT NULL DEFAULT NEXTVAL ('public.usuario_seq'),
+  tipo_usuario_id INT NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  username VARCHAR(12) NOT NULL,
+  password VARCHAR(12) NOT NULL,
+  PRIMARY KEY (id)
+ ,
+  CONSTRAINT fk_usuario_tipo_usuario1
+    FOREIGN KEY (tipo_usuario_id)
+    REFERENCES public.tipo_usuario (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+CREATE INDEX fk_usuario_tipo_usuario1_idx ON public.usuario (tipo_usuario_id ASC);
+
+CREATE SEQUENCE public.puntaje_seq;
+
+CREATE TABLE IF NOT EXISTS public.puntaje (
+  idpuntaje INT NOT NULL DEFAULT NEXTVAL ('public.puntaje_seq'),
+  video_id INT NOT NULL,
+  usuario_id INT NOT NULL,
+  valor INT NOT NULL,
+  PRIMARY KEY (idpuntaje)
+ ,
+  CONSTRAINT fk_puntaje_video
+    FOREIGN KEY (video_id)
+    REFERENCES public.video (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_puntaje_usuario1
+    FOREIGN KEY (usuario_id)
+    REFERENCES public.usuario (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+CREATE INDEX fk_puntaje_video_idx ON public.puntaje (video_id ASC);
+CREATE INDEX fk_puntaje_usuario1_idx ON public.puntaje (usuario_id ASC);
