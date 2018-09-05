@@ -51,7 +51,25 @@
     transition-duration: 0.4s;
 }
 
+.boton1 {
+ 
+  left: : 10px;
+}
 
+.boton2{
+ 
+  left: : 50px;
+}
+
+.boton3{
+ 
+  right: : 10px;
+}
+
+.boton4{
+ 
+  right: : 20px;
+}
 
 
 .button2:hover {
