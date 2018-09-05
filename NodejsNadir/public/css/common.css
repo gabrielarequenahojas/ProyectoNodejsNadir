@@ -50,27 +50,19 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
-
-.boton1 {
- 
-  left: : 10px;
+.padre {
+  /* IMPORTANTE */
+  text-align: center;
 }
 
-.boton2{
- 
-  left: : 50px;
+.hijo {
+  background-color: yellow;
+  padding: 1px;
+  margin: 1px;
+  
+  /* IMPORTANTE */
+  display: inline-block;
 }
-
-.boton3{
- 
-  right: : 10px;
-}
-
-.boton4{
- 
-  right: : 20px;
-}
-
 
 .button2:hover {
     box-shadow: 15px 15px 15px 15px rgba(0,0,0,0.24),15px 15px 15px 15px rgba(0,0,0,0.19);
