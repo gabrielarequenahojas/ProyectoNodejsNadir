@@ -1,0 +1,34 @@
+{{#section 'head'}}
+	<link rel="stylesheet" href="css/bienvenidos.css" />
+	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
+{{/section}}
+
+
+    
+    
+<br />
+
+ <form action="/bienvenidos" method="post" id="targetForm" name="">
+  <div class="imgcontainer">
+      <img src="recursos/imagenes/logoJS.png" alt="Logo"  class="img-rounded rotate"/>
+  </div>
+
+  <div class="contenedor">
+    <h1>INICIA SESIÓN EN NADIR</h1>
+       <br/>
+      
+    <input id="nick" name="nick" type="text" placeholder="INGRESE SU NICK"  required>
+
+      <br/>
+      <input id="clave" name="clave" type="password" placeholder="INGRESE SU CLAVE"  required>
+
+      <br/>
+    
+      <a href="administradorVideos" id="entrar" class=""> ENTRAR </a>
+      <hr/>
+  
+      <a href="creaCuenta" id="registrarse" class=""> REG&Iacute;STRARSE</a>
+  </div>
+
+ 
+</form>
