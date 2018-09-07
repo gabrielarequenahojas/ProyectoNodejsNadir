@@ -836,7 +836,9 @@ a:hover + div {
 }
 
 .izquierda{
-  margin-left: 50px; 
+   width: 200px;
+  margin: 0 auto;
+}
 }
 
 
