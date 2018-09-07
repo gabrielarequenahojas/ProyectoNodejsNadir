@@ -3,7 +3,7 @@ var idxVideoPagina = "";
 var urlVideo = "";
 /*Funcion inicial al cargar la pagina*/
 $(function () {
-    
+    alert("hoooola"); 
     mostrarHtml();
 
      $("#btnplay").click(function (e) {

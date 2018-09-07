@@ -69,14 +69,6 @@ app.get('/index.html', function(req, res){
 });
 
 
-/*BIBLIOTECA VIDEOS*/
-
-app.get('/bibliotecaVideos', function(req, res){
-    res.render('bibliotecaVideos');
-
-});
-
-
 
 /*CONOCENOS*/
 
@@ -114,11 +106,20 @@ app.get('/administradorVideos', function(req, res){
 
 });
 
-app.get('/user', function(req,res){
+app.get('/usuario', function(req,res){
   knex('usuario')
+    .where({ tipo_usuario_id: 3 })
     .select()
     .then( objCollectUsers => {
-       res.render('user/index', {objUsers: objCollectUsers});
+       res.render('partials/usuario', {objUsers: objCollectUsers});
+     });
+});
+
+app.get('/bibliotecaVideos', function(req,res){
+  knex('video')    
+    .select()
+    .then( objCollectVideos => {
+       res.render('partials/bibliotecaVideos', {objVideos: objCollectVideos});
      });
 });
 
