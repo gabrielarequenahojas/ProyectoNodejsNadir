@@ -1,0 +1,352 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+
+-- Started on 2018-09-07 08:41:10 -05
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 13081)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 3025 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- TOC entry 200 (class 1259 OID 24776)
+-- Name: opcion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.opcion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.opcion_seq OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 201 (class 1259 OID 24778)
+-- Name: opcion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.opcion (
+    id integer DEFAULT nextval('public.opcion_seq'::regclass) NOT NULL,
+    pregunta_id integer NOT NULL,
+    id_imagen character varying(200) NOT NULL,
+    valida smallint NOT NULL
+);
+
+
+ALTER TABLE public.opcion OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 24762)
+-- Name: pregunta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pregunta_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pregunta_seq OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 24764)
+-- Name: pregunta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pregunta (
+    id integer DEFAULT nextval('public.pregunta_seq'::regclass) NOT NULL,
+    video_id integer NOT NULL,
+    contenido character varying(200) NOT NULL,
+    url_audio character varying(200) NOT NULL
+);
+
+
+ALTER TABLE public.pregunta OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 24812)
+-- Name: puntaje_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.puntaje_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.puntaje_seq OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 24814)
+-- Name: puntaje; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.puntaje (
+    idpuntaje integer DEFAULT nextval('public.puntaje_seq'::regclass) NOT NULL,
+    video_id integer NOT NULL,
+    usuario_id integer NOT NULL,
+    valor integer NOT NULL
+);
+
+
+ALTER TABLE public.puntaje OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 24790)
+-- Name: tipo_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipo_usuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipo_usuario_seq OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 24792)
+-- Name: tipo_usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_usuario (
+    id integer DEFAULT nextval('public.tipo_usuario_seq'::regclass) NOT NULL,
+    descripcion character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_usuario OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 24798)
+-- Name: usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.usuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_seq OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 24800)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario (
+    id integer DEFAULT nextval('public.usuario_seq'::regclass) NOT NULL,
+    tipo_usuario_id integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    username character varying(12) NOT NULL,
+    password character varying(12) NOT NULL,
+    url_foto character varying(100)
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 24751)
+-- Name: video_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.video_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.video_seq OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 24753)
+-- Name: video; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.video (
+    id integer DEFAULT nextval('public.video_seq'::regclass) NOT NULL,
+    titulo character varying(50) NOT NULL,
+    descripcion character varying(200) NOT NULL,
+    creditos character varying(200) NOT NULL,
+    url_video character varying(200) NOT NULL,
+    url_portada character varying(200) NOT NULL
+);
+
+
+ALTER TABLE public.video OWNER TO postgres;
+
+--
+-- TOC entry 3011 (class 0 OID 24778)
+-- Dependencies: 201
+-- Data for Name: opcion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.opcion (id, pregunta_id, id_imagen, valida) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3009 (class 0 OID 24764)
+-- Dependencies: 199
+-- Data for Name: pregunta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pregunta (id, video_id, contenido, url_audio) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3017 (class 0 OID 24814)
+-- Dependencies: 207
+-- Data for Name: puntaje; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.puntaje (idpuntaje, video_id, usuario_id, valor) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3013 (class 0 OID 24792)
+-- Dependencies: 203
+-- Data for Name: tipo_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_usuario (id, descripcion) FROM stdin;
+1	ADMINISTRADOR
+2	PROFESOR
+3	JUGADOR
+\.
+
+
+--
+-- TOC entry 3015 (class 0 OID 24800)
+-- Dependencies: 205
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario (id, tipo_usuario_id, nombre, username, password, url_foto) FROM stdin;
+1	1	HECTOR LUIS	hchcimbo	hchimbo	\N
+2	2	MARIA GABRIELA	mrequena	mrequena	\N
+3	3	MARIO			recursos/imagenes/avatar1.JPG
+4	3	LUIGI			recursos/imagenes/avatar2.JPG
+5	3	TOAD			recursos/imagenes/avatar3.JPG
+\.
+
+
+--
+-- TOC entry 3007 (class 0 OID 24753)
+-- Dependencies: 197
+-- Data for Name: video; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.video (id, titulo, descripcion, creditos, url_video, url_portada) FROM stdin;
+2	LAS FRUTAS	Conociendo las frutas	GABRIELA REQUENA	https://www.youtube.com/watch?v=sD-Cdf61diw	recursos/imagenes/portadafrutas.jpg
+1	ANIMALES DE LA GRANJA	Excursión y descripción de animales de la granja	GABRIELA REQUENA	recursos/video/video_1.mp4	recursos/imagenes/portadagranja.jpg
+\.
+
+
+--
+-- TOC entry 3026 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: opcion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.opcion_seq', 1, false);
+
+
+--
+-- TOC entry 3027 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: pregunta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pregunta_seq', 1, false);
+
+
+--
+-- TOC entry 3028 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: puntaje_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.puntaje_seq', 1, false);
+
+
+--
+-- TOC entry 3029 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: tipo_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_usuario_seq', 1, false);
+
+
+--
+-- TOC entry 3030 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_seq', 1, false);
+
+
+--
+-- TOC entry 3031 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: video_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.video_seq', 2, true);
+
+
+-- Completed on 2018-09-07 08:41:11 -05
+
+--
+-- PostgreSQL database dump complete
+--
+
