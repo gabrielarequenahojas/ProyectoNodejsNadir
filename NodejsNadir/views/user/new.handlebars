@@ -1,0 +1,27 @@
+{{#section 'head'}}
+	<link rel="stylesheet" href="css/bienvenidos.css" />
+	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
+{{/section}}
+
+
+<!-- NOTA: utilice helper para simplificar el código de esta sección -->
+
+
+<h2><a href="/user">Usuarios</a></h2>
+
+<form class="form" action="/user" method="post">
+  <div class="form-group">
+    <label for="title"></label>
+    <input type="text" class="form-control" id="tipo_usuario_id" name="tipo_usuario_id" placeholder="Ingresa el tipo de usuario">  
+
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el nombre">   
+
+    <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa el nick">  
+
+    <input type="text" class="form-control" id="password" name="password" placeholder="Ingresa la contraseña">  
+
+    <input type="text" class="form-control" id="url_foto" name="url_foto" placeholder="Ingresa el url de la foto">  
+
+  </div>
+  <button type="submit" class="btn btn-default success">Aceptar</button>
+</form>
