@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 var express = require('express');
 var router = express.Router();
 
@@ -13,7 +10,7 @@ const knex = require('../db/knex');
 
 
 //routing read database postgrsql
-<<<<<<< HEAD
+
 router.get('/', function(req,res){  
   knex('usuario')
     .where({ tipo_usuario_id: 3 })
@@ -23,7 +20,7 @@ router.get('/', function(req,res){
      });
     
 }); 
-=======
+
 router.get('/', (req, res) => {
   knex('usuario')
     .select()
@@ -31,14 +28,13 @@ router.get('/', (req, res) => {
       res.render('user/index', { title: "Usuarios", objUsuarios: usuarios });
   });  
 });
->>>>>>> refs/remotes/origin/master
+
 
 //routing new + form+ get
 router.get('/new', (req, res) => {
   res.render('user/new', { title: "Form Users" });
 });
 
-<<<<<<< HEAD
 function seleccionJugador(){
   alert('hola');
 }
@@ -55,8 +51,8 @@ function respondAndRenderUser(id){
 }
 
 
-module.exports = router;
-=======
+
+
 // router read show /user/id 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
@@ -170,4 +166,4 @@ function validId(id) {
 
 module.exports = router;
 
->>>>>>> refs/remotes/origin/master
+

@@ -8,15 +8,15 @@ var router = express.Router();
 const knex = require('../db/knex');
 
 
-
+router.use(express.static(__dirname + '/public'));
 //routing read database postgrsql
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
   knex('video')
     .select()
     .then(videos =>{
-      res.render('partials/video/index', { title: "VIDEOS", objVideos: videos });
+      res.render('video/index', { title: "VIDEOS", objVideos: videos });
   });  
-});
+});*/
 
 //routing new + form+ get
 router.get('/new', (req, res) => {

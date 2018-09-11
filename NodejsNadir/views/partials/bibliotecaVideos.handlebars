@@ -4,19 +4,15 @@
 <br>
 <div>
   <div class="col-md-12 col-md-offset-2 ">         
-          <div id="portadas">
-          	{{#each objVideos}}   
-              <div class="col-4 col-sm-1"><a type="button" class="btn btn-default btn-danger" href='/aulaVideo/{{id}}'><img class='imagen' src='{{url_portada}}' alt='"+ url_portada +"'></a></div>           
-              <!--form method="get" action="/{{id}}">
-                <input type="text" name="{{id}}" id="{{id}} value="{{id}}"> 
-                <button type="submit"/><img class='imagen' src='{{url_portada}}' alt='"+ url_portada +"'></button>
-              </form-->
-				<!--div class='responsive'><div class='gallery'><a type "button" id='{{id}}' href='aulaVideo'> <img class='imagen' src='{{url_portada}}' alt='"+ url_portada +"'></a></div></div-->
-  			{{/each}}            
-          </div>
-          <p class = "oculta"  id = "urlVideo"></p>
-          <p class = "oculta"  id = "indexVideo"></p>
-
+    <div id="portadas">
+     	{{#each objVideos}}   
+        <!--form method="post" action="/aulaVideo/{{id}}">
+          <input type="text" name="{{id}}" id="{{id}} value="{{id}}"> 
+          <button type="submit"/><img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></button>
+        </form-->
+		    <div class='responsive'><div class='gallery'><a type "button" id='{{id}}' href='/aulaVideo/{{id}}'> <img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></a></div></div>
+  		{{/each}}            
+    </div>    
   </div>
 
   

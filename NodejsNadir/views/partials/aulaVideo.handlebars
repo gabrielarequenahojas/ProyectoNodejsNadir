@@ -1,5 +1,14 @@
      
-<h1> id : {{id}}</h1>
-<div id="video">
-    <iframe src="xxxxxxxxxxxxxxxxxxx" frameborder="0" allowfullscreen></iframe>
-</div>
+<h1> id : {{video.id}}</h1>
+<p id="url">{{video.url_video}}</p>
+<div id="video"></div>
+<script>
+	var urlVideo = document.getElementById("url").innerHTML;
+	var patron = "https://www.youtube.com/watch?v=";
+    var nuevoValor = "https://www.youtube.com/embed/";
+    urlVideo = urlVideo.replace(patron, nuevoValor);
+    //alert(urlVideo);
+    var cadena = "<iframe src='" + urlVideo + "' frameborder='0' allowfullscreen></iframe>";
+    document.getElementById("video").innerHTML=cadena;
+</script>
+

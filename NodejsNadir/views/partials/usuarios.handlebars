@@ -1,0 +1,18 @@
+
+<center><h1>SELECCIONA UN JUGADOR</h1></center>
+
+{{#section 'head'}}
+
+      <link rel="stylesheet" href="css/cssNavegador.css"> 
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+{{/section}}
+
+<audio src="recursos/audios/seleccionajugador.mp3" autoplay="true"></audio>
+
+{{#each objUsers}}
+	<div class="hijo"">       
+        <a type = "button" class="button button2" href= "/bibliotecaVideos"> <div><center><h1>{{nombre}}</h1></center> <img id = "{{id}}" src="{{url_foto}}" /> </div></a>      
+       </div>       
+{{/each}}

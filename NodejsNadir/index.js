@@ -10,6 +10,11 @@ var env = process.env.NODE_ENV || 'development';
 var routes = require('./routes/index.js');
 var users = require('./routes/users.js');
 
+var videos = require('./routes/videos.js');
+var users_exc = require('./routes/users_exc.js');
+var bV = require('./routes/bV.js');
+var aV = require('./routes/aV.js');
+
 
 const knex = require('./db/knex');
 const pg = require('pg');
@@ -23,15 +28,6 @@ var https = require('http');
 //body.parse
 var bodyParser = require('body-parser');
 var fortune = require('./lib/fortune.js');
-<<<<<<< HEAD
-//add modules routers
-var routes = require('./routes/index.js');
-var users = require('./routes/users.js');
-var bV = require('./routes/bibliotecaVideos.js');
-var videos = require('./routes/videos.js');
-
-=======
->>>>>>> refs/remotes/origin/master
 
 var app = express();
 
@@ -53,15 +49,17 @@ app.use(express.static(__dirname + '/public'));
 
 // call routers
 app.use('/',routes);
-<<<<<<< HEAD
-app.use('/usuario',users);
+
+app.use('/usuarios',users_exc);
 app.use('/bibliotecaVideos',bV);
-app.use('/partials/video',videos);
+app.use('/aulaVideo',aV);
+app.use('/video',videos);
+
 //app.use('/aulaVideo/..',video);
-=======
+
 app.use('/user',users);
 //app.use('/users',users);
->>>>>>> refs/remotes/origin/master
+
 
 var handlebars = exphbs.create({
     defaultLayout:'main.handlebars'
