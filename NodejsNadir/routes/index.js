@@ -107,7 +107,7 @@ router.get('/preguntas/:id', (req, res) => {
   const id = req.params.id;
   //id_pg = obtenerPregunta(id);
   knex('pregunta')
-      .select('id')
+      .select()
       .where('video_id',id)
       .first()
       .then(preguntas => {id_p = preguntas.id; console.log("parte 1 :" + id_p);

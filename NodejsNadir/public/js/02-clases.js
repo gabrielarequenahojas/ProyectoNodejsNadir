@@ -26,6 +26,7 @@ var Pregunta = class Pregunta{
 var Opcion =class Opcion{
     constructor(jsonObj){
         this.id=jsonObj.id;
-        this.url=jsonObj.url;
+        this.pregunta_id=jsonObj.pregunta_id;
+        this.url=jsonObj.url_imagen;
     }
 }
