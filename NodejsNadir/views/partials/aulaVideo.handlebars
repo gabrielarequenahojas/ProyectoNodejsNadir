@@ -1,5 +1,15 @@
      
-<
-<div id="video">
-    <!--iframe src="https://www.youtube.com/embed/F9Bo89m2f6g" frameborder="0" allowfullscreen></iframe-->
-</div>
+<h1> id : {{video.id}}</h1>
+<p id="url">{{video.url_video}}</p>
+<div id="video"></div>
+<script>
+	var urlVideo = document.getElementById("url").innerHTML;
+	var patron = "https://www.youtube.com/watch?v=";
+    var nuevoValor = "https://www.youtube.com/embed/";
+    urlVideo = urlVideo.replace(patron, nuevoValor);
+    //alert(urlVideo);
+    var cadena = "<iframe src='" + urlVideo + "' frameborder='0' allowfullscreen></iframe>";
+    document.getElementById("video").innerHTML=cadena;
+</script>
+<a type="button" id='{{video.id}}' href='/preguntas/{{video.id}}'>ACTIVIDAD</a>
+

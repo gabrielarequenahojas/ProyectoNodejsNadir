@@ -10,6 +10,17 @@ const knex = require('../db/knex');
 
 
 //routing read database postgrsql
+
+router.get('/', function(req,res){  
+  knex('usuario')
+    .where({ tipo_usuario_id: 3 })
+    .select()
+    .then( objCollectUsers => {
+       res.render('partials/usuario', {objUsers: objCollectUsers});
+     });
+    
+}); 
+
 router.get('/', (req, res) => {
   knex('usuario')
     .select()
@@ -18,10 +29,29 @@ router.get('/', (req, res) => {
   });  
 });
 
+
 //routing new + form+ get
 router.get('/new', (req, res) => {
   res.render('user/new', { title: "Form Users" });
 });
+
+function seleccionJugador(){
+  alert('hola');
+}
+
+function respondAndRenderUser(id){  
+  if(typeof id != 'undefined'){
+    
+  }else{
+    
+    res.status(500);
+    alert('hola');
+     
+  }  
+}
+
+
+
 
 // router read show /user/id 
 router.get('/:id', (req, res) => {
@@ -135,4 +165,5 @@ function validId(id) {
 
 
 module.exports = router;
+
 
