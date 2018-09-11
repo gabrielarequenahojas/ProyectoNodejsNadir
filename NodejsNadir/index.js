@@ -1,39 +1,67 @@
 const express = require('express');
-const PORT = process.env.PORT || 5000 ;
-const knex = require('./db/knex');
 const path = require('path');
+const PORT = process.env.PORT || 5000 ;
+var methodOverride = require('method-override');
+
+
+var env = process.env.NODE_ENV || 'development';
+
+//add modules routers
+var routes = require('./routes/index.js');
+var users = require('./routes/users.js');
+
+
+const knex = require('./db/knex');
 const pg = require('pg');
+
 
 var exphbs  = require('express-handlebars');
 var express_handlebars_sections = require('express-handlebars-sections');
+
 var fs = require('fs');
 var https = require('http');
 //body.parse
 var bodyParser = require('body-parser');
 var fortune = require('./lib/fortune.js');
+<<<<<<< HEAD
 //add modules routers
 var routes = require('./routes/index.js');
 var users = require('./routes/users.js');
 var bV = require('./routes/bibliotecaVideos.js');
 var videos = require('./routes/videos.js');
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 var app = express();
 
-pg.defaults.ssl = true;
+pg.defaults.ssl = false;
 
 app.use(bodyParser.urlencoded({extended : true}));
 
 app.disable('x-powered-by');
+
+app.use(methodOverride('_method'));
+
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
 //archivos estáticos
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static(__dirname + '/public'));
 
 // call routers
 app.use('/',routes);
+<<<<<<< HEAD
 app.use('/usuario',users);
 app.use('/bibliotecaVideos',bV);
 app.use('/partials/video',videos);
 //app.use('/aulaVideo/..',video);
+=======
+app.use('/user',users);
+//app.use('/users',users);
+>>>>>>> refs/remotes/origin/master
 
 var handlebars = exphbs.create({
     defaultLayout:'main.handlebars'
@@ -41,6 +69,8 @@ var handlebars = exphbs.create({
 
 express_handlebars_sections(handlebars);
 app.engine('handlebars', handlebars.engine);
+
+
 app.set('view engine', 'handlebars');
 
 
@@ -64,6 +94,9 @@ function serveStaticFile(res, path, contentType, responseCode) {
         }
     });
 }
+
+
+
 
 /*INDEX HTML*/
 app.get('/', function(req, res){
@@ -92,13 +125,6 @@ app.get('/creaCuenta', function(req, res){
 
 });
 
-
-/*USUARIOS*/
-
-app.get('/usuarios', function(req, res){
-    res.render('usuarios');
-
-});
 
 /*terminos y Condiciones*/
 
