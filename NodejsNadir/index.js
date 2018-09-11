@@ -13,19 +13,27 @@ var bodyParser = require('body-parser');
 var fortune = require('./lib/fortune.js');
 //add modules routers
 var routes = require('./routes/index.js');
-//var users = require('./routes/users.js');
+var users = require('./routes/users.js');
+var bV = require('./routes/bibliotecaVideos.js');
+var videos = require('./routes/videos.js');
+
+
 var app = express();
 
 pg.defaults.ssl = true;
 
 app.use(bodyParser.urlencoded({extended : true}));
+
 app.disable('x-powered-by');
 //archivos estáticos
 app.use(express.static(__dirname + '/public'));
 
 // call routers
 app.use('/',routes);
-//app.use('/users',users);
+app.use('/usuario',users);
+app.use('/bibliotecaVideos',bV);
+app.use('/partials/video',videos);
+//app.use('/aulaVideo/..',video);
 
 var handlebars = exphbs.create({
     defaultLayout:'main.handlebars'
@@ -103,26 +111,7 @@ app.get('/terminosCondiciones', function(req, res){
 
 app.get('/administradorVideos', function(req, res){
     res.render('administradorVideos');
-
 });
-
-app.get('/usuario', function(req,res){
-  knex('usuario')
-    .where({ tipo_usuario_id: 3 })
-    .select()
-    .then( objCollectUsers => {
-       res.render('partials/usuario', {objUsers: objCollectUsers});
-     });
-});
-
-app.get('/bibliotecaVideos', function(req,res){
-  knex('video')    
-    .select()
-    .then( objCollectVideos => {
-       res.render('partials/bibliotecaVideos', {objVideos: objCollectVideos});
-     });
-});
-
 
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
