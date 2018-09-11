@@ -11,15 +11,6 @@ const knex = require('../db/knex');
 
 //routing read database postgrsql
 
-router.get('/', function(req,res){  
-  knex('usuario')
-    .where({ tipo_usuario_id: 3 })
-    .select()
-    .then( objCollectUsers => {
-       res.render('partials/usuario', {objUsers: objCollectUsers});
-     });
-    
-}); 
 
 router.get('/', (req, res) => {
   knex('usuario')

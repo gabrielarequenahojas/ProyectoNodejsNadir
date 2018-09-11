@@ -11,7 +11,6 @@ var routes = require('./routes/index.js');
 var users = require('./routes/users.js');
 var video = require('./routes/video.js');
 
-var videos = require('./routes/videos.js');
 var users_exc = require('./routes/users_exc.js');
 var bV = require('./routes/bV.js');
 var aV = require('./routes/aV.js');
@@ -56,7 +55,7 @@ app.use('/usuarios',users_exc);
 app.use('/bibliotecaVideos',bV);
 app.use('/aulaVideo',aV);
 app.use('/preguntas',preg);
-app.use('/video',videos);
+
 
 //app.use('/aulaVideo/..',video);
 

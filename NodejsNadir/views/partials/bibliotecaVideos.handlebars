@@ -1,43 +1,27 @@
-<<<<<<< HEAD
+
 {{#section 'head'}}
  <link rel="stylesheet" href="css/cssNavegador.css"> 
 	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
 	<script type="text/javascript"  src="js/bibliotecaVideos.js"></script>
 {{/section}}
 
-=======
->>>>>>> 6d78a4c0038d83c4cef832da2c129f84356a1b8b
 <audio src="recursos/audios/sonido_aulavideo.mp3" autoplay="true"></audio>
     
 <h1><center>DISFRUTA LOS VIDEOS</center></h1>
 <br>
-<div>
-  <div class="col-md-12 col-md-offset-2 ">         
-<<<<<<< HEAD
-          <div id="portadas">
-          	{{#each objVideos}}
-				<div class='responsive'>
-          <div class='gallery'>
-              <a id='lkvid'>
-               <right><img id='{{id}}'class='imagen' width="400" height="250" src='{{url_portada}}' alt='"+ url_portada +"'></right>
-               </a>
-           </div>
-        </div>
-        <br>
-  			{{/each}}
-             
-          </div>
-          <p class = "oculta"  id = "urlVideo"></p>
-          <p class = "oculta"  id = "indexVideo"></p>
 
-=======
     <div id="portadas">
      	{{#each objVideos}}   
-        <div class='responsive'><div class='gallery'><a type="button" id='{{id}}' href='/aulaVideo/{{id}}'> <img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></a></div></div>
+        <div class='responsive'>
+          <div class='gallery'>
+            <a type="button" id='{{id}}' href='/aulaVideo/{{id}}'> 
+                <center><img class='imagen'  width="400" height="250"  src='{{url_portada}}' alt='{{url_portada}}'> </center>
+            </a>
+          </div>
+        </div>}
+        <br>
   		{{/each}}            
     </div>    
->>>>>>> 6d78a4c0038d83c4cef832da2c129f84356a1b8b
-  </div>
-</div>
+  
 
   

@@ -90,7 +90,7 @@ function validateTodoRenderError(req, res, callback) {
       url_video : req.body.url_video,
        url_portada : req.body.url_portada
     };
-    callback(usuario);
+    callback(video);
   } else {
     res.status( 500);
     res.render('error', {
@@ -116,7 +116,7 @@ function respondAndRenderTodo(id, res, viewName) {
   }
 }
 
-function validTodo(usuarios) {
+function validTodo(videos) {
   /*return typeof usuarios.nombre == 'string' &&
           usuarios.nombre.trim() != '' &&
 
