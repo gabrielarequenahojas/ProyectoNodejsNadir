@@ -9,6 +9,7 @@ var env = process.env.NODE_ENV || 'development';
 //add modules routers
 var routes = require('./routes/index.js');
 var users = require('./routes/users.js');
+var video = require('./routes/video.js');
 
 
 const knex = require('./db/knex');
@@ -44,6 +45,7 @@ app.use(express.static(__dirname + '/public'));
 // call routers
 app.use('/',routes);
 app.use('/user',users);
+app.use('/video',video);
 //app.use('/users',users);
 
 var handlebars = exphbs.create({

@@ -1,5 +1,5 @@
 {{#section 'head'}}
-	
+ <link rel="stylesheet" href="css/cssNavegador.css"> 
 	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
 	<script type="text/javascript"  src="js/bibliotecaVideos.js"></script>
 {{/section}}
@@ -12,9 +12,16 @@
   <div class="col-md-12 col-md-offset-2 ">         
           <div id="portadas">
           	{{#each objVideos}}
-				<div class='responsive'><div class='gallery'><a id='lkvid'><img id='{{id}}'class='imagen' src='{{url_portada}}' alt='"+ url_portada +"'></a></div></div>
+				<div class='responsive'>
+          <div class='gallery'>
+              <a id='lkvid'>
+               <right><img id='{{id}}'class='imagen' width="400" height="250" src='{{url_portada}}' alt='"+ url_portada +"'></right>
+               </a>
+           </div>
+        </div>
+        <br>
   			{{/each}}
-            
+             
           </div>
           <p class = "oculta"  id = "urlVideo"></p>
           <p class = "oculta"  id = "indexVideo"></p>

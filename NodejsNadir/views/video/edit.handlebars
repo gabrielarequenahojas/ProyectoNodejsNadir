@@ -1,0 +1,43 @@
+{{#section 'head'}}
+
+      <link rel="stylesheet" href="css/cssNavegador.css"> 
+<link rel="stylesheet" href="css/w3.css">
+  <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+{{/section}}
+
+<a href="/video">Regresar a la lista de Videos</a>
+
+<h2>FORMULARIO EDITAR</h2>
+
+<!-- NOTA: utilice helper para simplificar el código de esta sección 
+agregar method-override 
+-->
+
+<div class="container">   
+
+<form class="form" action="/video/{{video.id}}?_method=PUT" method="post">
+  <div class="form-group">
+    <label for="title"></label>
+
+    <label for="name">Titulo: </label>
+    <input type="text" class="form-control" id="titulo" name="titulo"  value="{{video.titulo}}"> 
+
+    <label for="name">Descripcion: </label>
+    <input type="text" class="form-control" id="descripcion" name="descripcion"  value="{{video.descripcion}}">
+     
+     <label for="name">Creditos: </label>
+    <input type="text" class="form-control" id="creditos" name="creditos"  value="{{video.creditos}}">
+
+    
+     <label for="name"> URL Video: </label>
+     <input type="text" class="form-control" id="url_video" name="url_video"  value="{{video.url_video}}">
+
+      <label for="name"> URL Portada: </label>
+     <input type="text" class="form-control" id="url_portada" name="url_portada"  value="{{video.url_portada}}">
+
+  </div>
+  <button type="submit" class="btn btn-info">Actualizar</button>
+</form>
+ </div>
