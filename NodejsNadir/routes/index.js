@@ -61,6 +61,66 @@ router.get('/aulaVideo/:id', (req, res) => {
   respondAndRenderVideo(id,res,'partials/aulaVideo'); 
 });
 
+/*router.get('/preguntas', function(req,res){  
+  knex('pregunta')
+    .where({ video_id: 1 })
+    .select()
+    .then( objCollectPreguntas => {
+       res.render('partials/preguntas', {preguntas: objCollectPreguntas});
+     });
+    
+}); */
+
+function respondAndRenderPregunta(id,res,viewName){  
+  
+  if(typeof id != 'undefined'){
+
+    knex('pregunta')
+      .select()
+      .where('video_id',id)
+      .first()
+      .then(preguntas => {
+        res.render(viewName,{pregunta: preguntas});
+    });
+  }else{
+    
+    console.log('error invalid id ');   
+    res.status(500);
+    res.render('error', {
+      message: 'Invalid ID video' 
+    });    
+  }  
+}
+
+function obtenerPregunta(id_video){
+	knex('pregunta')
+      .select('id')
+      .where('video_id',id_video)
+      .first()
+      .then(preguntas => {const id_p = preguntas.id; console.log("parte 1 :" + id_p);return id_p;});
+
+}
+
+router.get('/preguntas/:id', (req, res) => {
+  //console.log("aquiiii");
+  var id_p = 0;
+  const id = req.params.id;
+  //id_pg = obtenerPregunta(id);
+  knex('pregunta')
+      .select('id')
+      .where('video_id',id)
+      .first()
+      .then(preguntas => {id_p = preguntas.id; console.log("parte 1 :" + id_p);
+      console.log("salto");
+  knex('opcion')
+      .select()
+      .where({pregunta_id: id_p})        
+      .then(objCollectOpciones => {
+      console.log("parte 2 :" + id_p);
+        res.render('partials/preguntas', {objOpciones: objCollectOpciones});
+      });  }); 
+});
+
 
 
 // get data from form in order to save on database

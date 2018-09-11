@@ -6,13 +6,10 @@
   <div class="col-md-12 col-md-offset-2 ">         
     <div id="portadas">
      	{{#each objVideos}}   
-        <!--form method="post" action="/aulaVideo/{{id}}">
-          <input type="text" name="{{id}}" id="{{id}} value="{{id}}"> 
-          <button type="submit"/><img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></button>
-        </form-->
-		    <div class='responsive'><div class='gallery'><a type "button" id='{{id}}' href='/aulaVideo/{{id}}'> <img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></a></div></div>
+        <div class='responsive'><div class='gallery'><a type="button" id='{{id}}' href='/aulaVideo/{{id}}'> <img class='imagen' src='{{url_portada}}' alt='{{url_portada}}'></a></div></div>
   		{{/each}}            
     </div>    
   </div>
+</div>
 
   
