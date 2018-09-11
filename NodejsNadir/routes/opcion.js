@@ -10,46 +10,52 @@ const knex = require('../db/knex');
 
 //routing read database postgrsql
 router.get('/', (req, res) => {
-  knex('video')
+  knex('opcion')
     .select()
-    .then(videos =>{
-      res.render('video/index', { title: "video", objVideos: videos });
+    .then(opcion =>{
+      res.render('opcion/index', { title: "opcion", objOpcion: opcion });
   });  
 });
 
 //routing new + form+ get
 router.get('/new', (req, res) => {
-  res.render('video/new', { title: "Form videos" });
+  res.render('opcion/new', { title: "Form opcion" });
 });
 
 
 router.get('/:id/edit', (req,res) => {
   const id = req.params.id;
   console.log('edit id:'+id);
-  respondAndRenderTodo(id,res,'video/edit');  
+  respondAndRenderTodo(id,res,'opcion/edit');  
 });
 
 //routing new + form + post
 router.post('/', (req, res) => {  
- validateTodoRenderError(req, res, (videos) => {
-    knex('video')
-      .insert(videos, 'id')
+ validateTodoRenderError(req, res, (opcion) => {
+    knex('opcion')
+      .insert(opcion, 'id')
       .then(ids => {
         const id = ids[0];
-        res.redirect(`/video/${id}`);
+        res.redirect(`/opcion/${id}`);
       });
   });
 });
 
 router.put('/:id',(req,res) => {
   console.log('updating...');
-  validateTodoRenderError(req,res,(videos) => {
-    knex('video')
+  validateTodoRenderError(req,res,(opcions) => {
+    knex('opcion')
       .where('id',req.params.id)
-      .update({titulo : req.body.titulo, descripcion: req.body.descripcion, creditos: req.body.creditos, 
-      url_video : req.body.url_video, url_portada : req.body.url_portada} )
+
+      .update({
+      pregunta_id: req.body.pregunta_id,
+       id_imagen: req.body.id_imagen, 
+       valida: req.body.valida
+  
+    } )
+
       .then( () =>  {
-        res.redirect(`/video`);
+        res.redirect(`/opcion`);
       });
   });   
 });
@@ -59,11 +65,11 @@ router.delete('/:id', (req, res) => {
   console.log('deleting...');
   const id = req.params.id;
   if(validId(id)) {
-    knex('video')
+    knex('opcion')
       .where('id', id)
       .del()
       .then(() => {
-        res.redirect('/video');
+        res.redirect('/opcion');
       });
   } else {
     res.status( 500);
@@ -77,14 +83,12 @@ function validateTodoRenderError(req, res, callback) {
   console.log(validTodo(req.body));
   if(validTodo(req.body)) {
     //alert(validTodo(req.body));
-    const video = {
-      titulo : req.body.titulo,
-       descripcion: req.body.descripcion,
-        creditos: req.body.creditos, 
-      url_video : req.body.url_video,
-       url_portada : req.body.url_portada
+    const opcion = {
+      pregunta_id: req.body.pregunta_id,
+       id_imagen: req.body.id_imagen, 
+       valida: req.body.valida
     };
-    callback(video);
+    callback(opcion);
   } else {
     res.status( 500);
     res.render('error', {
@@ -95,12 +99,12 @@ function validateTodoRenderError(req, res, callback) {
 
 function respondAndRenderTodo(id, res, viewName) {
   if(validId(id)) {
-    knex('video')
+    knex('opcion')
       .select()
       .where('id', id)
       .first()
-      .then(videos=> {
-        res.render(viewName, {video: videos});
+      .then(opcion=> {
+        res.render(viewName, {opcion: opcion});
       });
   } else {
     res.status( 500);
@@ -110,7 +114,7 @@ function respondAndRenderTodo(id, res, viewName) {
   }
 }
 
-function validTodo(videos) {
+function validTodo(opcion) {
   /*return typeof usuarios.nombre == 'string' &&
           usuarios.nombre.trim() != '' &&
 

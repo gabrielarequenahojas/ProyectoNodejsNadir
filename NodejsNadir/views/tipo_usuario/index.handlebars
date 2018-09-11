@@ -2,7 +2,7 @@
 {{#section 'head'}}
 
      <link rel="stylesheet" href="css/cssNavegador.css"> 
-   
+    
       <link rel="stylesheet" href="css/w3.css">
     <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript"  src="js/bootstrap.min.js"></script>
@@ -14,19 +14,19 @@
 </div>
 
 
-<a href="/video/new" type="button" class="btn btn-info" >NUEVO</a>
+<a href="/tipo_usuario/new" type="button" class="btn btn-info" >NUEVO</a>
 </br>
-<h3> LISTA DE VIDEOS</h3>
+<h3> LISTA DE TIPO DE USUARIO</h3>
  <div class="contenedor">
 <div class="row pt-md-5"></div>
-{{#each objVideos}}
+{{#each objTipo_usuarios}}
   <div class="row">
-    <div class="col-4 col-sm-1"><a href='/video/{{id}}'>{{titulo}}</a></div>
+    <div class="col-4 col-sm-1"><a href='/tipo_usuario/{{id}}'>{{descripcion}}</a></div>
     </br>
-    <div class="col-4 col-sm-1"><a type="button" class="btn btn-info" href='/video/{{id}}/edit'>EDITAR</a></div>
+    <div class="col-4 col-sm-1"><a type="button" class="btn btn-info" href='/tipo_usuario/{{id}}/edit'>EDITAR</a></div>
    
     <div class="col-4 col-sm-1">
-      <form action='/video/{{id}}?_method=DELETE' method='post'>
+      <form action='/tipo_usuario/{{id}}?_method=DELETE' method='post'>
         <button type="submit" class="btn btn-info">BORRAR</button>            
       </form>
     </div>

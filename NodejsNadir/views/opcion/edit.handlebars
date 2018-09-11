@@ -1,0 +1,40 @@
+{{#section 'head'}}
+
+      <link rel="stylesheet" href="css/cssNavegador.css"> 
+      <link rel="stylesheet" href="css/bienvenidos.css" />
+      <link rel="stylesheet" href="css/w3.css">
+      <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+      <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+{{/section}}
+
+<a href="/opcion">Regresar a la lista de Opciones</a>
+
+<h3>FORMULARIO EDITAR</h3>
+
+<!-- NOTA: utilice helper para simplificar el código de esta sección 
+agregar method-override 
+-->
+
+ <div class="contenedor">
+<form class="form" action="/opcion/{{opcion.id}}?_method=PUT" method="post">
+  <div class="form-group">
+    <label for="title"></label>
+
+    <label for="name">Pregunta: </label>
+    <input type="text" class="form-control" id="pregunta_id" name="pregunta_id"  value="{{opcion.pregunta_id}}"> 
+     <br/>
+
+    <label for="name">Id imagen: </label>
+    <input type="text" class="form-control" id="id_imagen" name="id_imagen"  value="{{opcion.id_imagen}}">
+      <br/>
+
+     <label for="name">Valida: </label>
+    <input type="text" class="form-control" id="valida" name="valida"  value="{{opcion.valida}}">
+       <br/>
+  
+      <br/>
+  </div>
+  <button type="submit" class="btn btn-info">ACEPTAR</button>
+</form>
+ </div>

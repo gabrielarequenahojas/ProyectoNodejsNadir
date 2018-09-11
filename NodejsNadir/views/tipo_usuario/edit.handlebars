@@ -1,0 +1,31 @@
+{{#section 'head'}}
+
+      <link rel="stylesheet" href="css/cssNavegador.css"> 
+      <link rel="stylesheet" href="css/bienvenidos.css" />
+      <link rel="stylesheet" href="css/w3.css">
+      <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+      <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+{{/section}}
+
+<a href="/tipo_usuario">Regresar a la lista de Videos</a>
+
+<h3>FORMULARIO EDITAR</h3>
+
+<!-- NOTA: utilice helper para simplificar el código de esta sección 
+agregar method-override 
+-->
+
+ <div class="contenedor">
+<form class="form" action="/tipo_usuario/{{tipo_usuario.id}}?_method=PUT" method="post">
+  <div class="form-group">
+    <label for="title"></label>
+
+  
+    <label for="name">Descripcion: </label>
+    <input type="text" class="form-control" id="descripcion" name="descripcion"  value="{{tipo_usuario.descripcion}}">
+      <br/>
+
+  <button type="submit" class="btn btn-info">ACEPTAR</button>
+</form>
+ </div>

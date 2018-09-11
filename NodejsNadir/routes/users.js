@@ -44,13 +44,6 @@ function respondAndRenderUser(id){
 
 
 
-// router read show /user/id 
-router.get('/:id', (req, res) => {
-  const id = req.params.id;
-  respondAndRenderTodo(id,res,'user/single');
-  
-});
-
 router.get('/:id/edit', (req,res) => {
   const id = req.params.id;
   console.log('edit id:'+id);
@@ -77,7 +70,7 @@ router.put('/:id',(req,res) => {
       .update({tipo_usuario_id : req.body.tipo_usuario_id, nombre: req.body.nombre, username: req.body.username, password : req.body.password,
       url_foto : req.body.url_foto} )
       .then( () =>  {
-        res.redirect(`/user/${req.params.id}`);
+        res.redirect(`/user`);
       });
   });   
 });
