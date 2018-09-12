@@ -7,13 +7,13 @@
 
 <audio src="recursos/audios/sonido_aulavideo.mp3" autoplay="true"></audio>
     
-<h1><center>DISFRUTA LOS VIDEOS</center></h1>
+<h1><center>SELECCIONA UN VIDEO</center></h1>
 <br>
 
     <div id="portadas">
-     	{{#each objVideos}}   
-        <div class='responsive'>
-          <div class='gallery'>
+     	{{#each objVideos}}  
+        <div class='padre'>
+          <div class='hijo'>
             <a type="button" id='{{id}}' href='/aulaVideo/{{id}}'> 
                 <center><img class='imagen'  width="400" height="250"  src='{{url_portada}}' alt='{{url_portada}}'> </center>
             </a>
