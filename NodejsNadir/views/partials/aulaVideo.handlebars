@@ -1,5 +1,4 @@
  {{#section 'head'}}
- <link rel="stylesheet" href="css/video.css"> 
 
  <link rel="stylesheet" href="css/cssNavegador.css"> 
 
@@ -28,8 +27,7 @@
     urlVideo = urlVideo.replace(patron, nuevoValor);
     //alert(urlVideo);
 
-    var cadena = " <pre><div class="video-responsive"><iframe src='" + urlVideo + "' frameborder='0' allowfullscreen ></iframe> </div>
-<pre>";
+    var cadena = "<iframe src='" + urlVideo + "' frameborder='0' allowfullscreen ></iframe>";
     document.getElementById("video").innerHTML=cadena;
 </script>
 </div>
