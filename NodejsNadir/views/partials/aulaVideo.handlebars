@@ -1,15 +1,38 @@
-     
+ {{#section 'head'}}
+ <link rel="stylesheet" href="css/video.css"> 
+
+ <link rel="stylesheet" href="css/cssNavegador.css"> 
+
+<link rel="stylesheet" href="css/bienvenidos.css" />
+ 
+	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
+	<script type="text/javascript"  src="js/bibliotecaVideos.js"></script>
+{{/section}}
+
+<h1><center>SELECCIONA UN VIDEO</center></h1>
+
+ <div class = "oculta" >
 <h1> id : {{video.id}}</h1>
 <p id="url">{{video.url_video}}</p>
-<div id="video"></div>
+</div>
+
+
+
+<div id="video" class="">
+<div id="" class="">
 <script>
+	
 	var urlVideo = document.getElementById("url").innerHTML;
 	var patron = "https://www.youtube.com/watch?v=";
     var nuevoValor = "https://www.youtube.com/embed/";
     urlVideo = urlVideo.replace(patron, nuevoValor);
     //alert(urlVideo);
-    var cadena = "<iframe src='" + urlVideo + "' frameborder='0' allowfullscreen></iframe>";
+
+    var cadena = " <pre><div class="video-responsive"><iframe src='" + urlVideo + "' frameborder='0' allowfullscreen ></iframe> </div>
+<pre>";
     document.getElementById("video").innerHTML=cadena;
 </script>
+</div>
+</div>
 <a type="button" id='{{video.id}}' href='/preguntas/{{video.id}}'>ACTIVIDAD</a>
 
