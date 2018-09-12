@@ -1,5 +1,5 @@
 {{#section 'head'}}
-	<link rel="stylesheet" href="css/bienvenidos.css" />
+
   <link rel="stylesheet" href="css/cssNavegador.css"> 
   <link rel="stylesheet" href="css/w3.css">
 	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
@@ -10,20 +10,21 @@
 
 
 <h3><a href="/user">USUARIOS</a></h3>
-
+ <div class="container">
 <form class="form" action="/user" method="post">
   <div class="form-group">
     <label for="title"></label>
     <input type="text" class="form-control" id="tipo_usuario_id" name="tipo_usuario_id" placeholder="Ingresa el tipo de usuario">  
-
+</br>
     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el nombre">   
-
+</br>
     <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa el nick">  
-
+</br>
     <input type="text" class="form-control" id="password" name="password" placeholder="Ingresa la contraseña">  
-
+</br>
     <input type="text" class="form-control" id="url_foto" name="url_foto" placeholder="Ingresa el url de la foto">  
-
+</br>
   </div>
-  <button type="submit" class="btn btn-default success">ACEPTAR</button>
-</form>
+  <button type="submit" class="btn btn-info">ACEPTAR</button>
+</form> 
+ </div>

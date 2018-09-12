@@ -8,10 +8,13 @@ var env = process.env.NODE_ENV || 'development';
 
 //add modules routers
 var routes = require('./routes/index.js');
+
 var users = require('./routes/users.js');
 var video = require('./routes/video.js');
 var tipo_usuario = require('./routes/tipo_usuario.js');
 var opcion = require('./routes/opcion.js');
+var pregunta = require('./routes/pregunta.js');
+var puntaje = require('./routes/puntaje.js');
 
 var users_exc = require('./routes/users_exc.js');
 var bV = require('./routes/bV.js');
@@ -65,7 +68,8 @@ app.use('/user',users);
 app.use('/video',video);
 app.use('/tipo_usuario',tipo_usuario);
 app.use('/opcion',opcion);
-
+app.use('/pregunta',pregunta);
+app.use('/puntaje',puntaje);
 //app.use('/users',users);
 
 

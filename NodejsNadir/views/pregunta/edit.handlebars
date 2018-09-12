@@ -1,14 +1,14 @@
 {{#section 'head'}}
 
       <link rel="stylesheet" href="css/cssNavegador.css"> 
-      <link rel="stylesheet" href="css/bienvenidos.css" />
+      
       <link rel="stylesheet" href="css/w3.css">
       <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
       <script type="text/javascript"  src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
 {{/section}}
 
-<a href="/video">Regresar a la lista de Videos</a>
+<a href="/pregunta">Regresar a la lista de Pregunta</a>
 
 <h3>FORMULARIO EDITAR</h3>
 
@@ -16,30 +16,24 @@
 agregar method-override 
 -->
 
- <div class="contenedor">
-<form class="form" action="/video/{{video.id}}?_method=PUT" method="post">
+ <div class="container">
+<form class="form" action="/pregunta/{{pregunta.id}}?_method=PUT" method="post">
   <div class="form-group">
     <label for="title"></label>
 
-    <label for="name">Titulo: </label>
-    <input type="text" class="form-control" id="titulo" name="titulo"  value="{{video.titulo}}"> 
+    <label for="name">Video id: </label>
+    <input type="text" class="form-control" id="video_id" name="video_id"  value="{{pregunta.video_id}}"  disabled> 
      <br/>
 
-    <label for="name">Descripcion: </label>
+    <label for="name">Contenido: </label>
     <input type="text" class="form-control" id="descripcion" name="descripcion"  value="{{video.descripcion}}">
       <br/>
 
-     <label for="name">Creditos: </label>
-    <input type="text" class="form-control" id="creditos" name="creditos"  value="{{video.creditos}}">
-       <br/>
     
-     <label for="name"> URL Video: </label>
-     <input type="text" class="form-control" id="url_video" name="url_video"  value="{{video.url_video}}">
+     <label for="name"> URL Audio: </label>
+     <input type="text" class="form-control" id="url_audio" name="url_audio"  value="{{video.url_audio}}">
       <br/>
 
-      <label for="name"> URL Portada: </label>
-     <input type="text" class="form-control" id="url_portada" name="url_portada"  value="{{video.url_portada}}">
-      <br/>
   </div>
   <button type="submit" class="btn btn-info">ACEPTAR</button>
 </form>

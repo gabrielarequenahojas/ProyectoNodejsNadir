@@ -1,8 +1,7 @@
 
 {{#section 'head'}}
-link rel="stylesheet" href="css/cssNavegador.css"> 
-      <link rel="stylesheet" href="css/bienvenidos.css" />
-      <link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/cssNavegador.css"> 
+        <link rel="stylesheet" href="css/w3.css">
 	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
 {{/section}}
 
@@ -10,22 +9,24 @@ link rel="stylesheet" href="css/cssNavegador.css">
 <!-- NOTA: utilice helper para simplificar el código de esta sección -->
 
 
-<h2><a href="/video">Videos</a></h2>
-
+<h3><a href="/video">Videos</a></h3>
+ <div class="container">
 <form class="form" action="/video" method="post">
   <div class="form-group">
     <label for="title"></label>
     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresa el titulo">  
-
+      </br>
     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresa la descripcion">   
-
+      </br>
     <input type="text" class="form-control" id="creditos" name="creditos" placeholder="Ingresa los creditos">  
 
-
+      </br>
     <input type="text" class="form-control" id="url_video" name="url_video" placeholder="Ingresa el url del video">  
-
+      </br>
     <input type="text" class="form-control" id="url_portada" name="url_portada" placeholder="Ingresa el url de la portada">  
-
+      </br>
   </div>
-  <button type="submit" class="btn btn-default success">Aceptar</button>
+
+  <button type="submit" class="btn btn-info">ACEPTAR</button>
 </form>
+</div>
