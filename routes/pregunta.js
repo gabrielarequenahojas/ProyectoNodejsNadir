@@ -172,7 +172,7 @@ router.put('/rest/pregunta/editar/:id', (req, res) => {
     url_audio: req.body.url_audio
   }
 
-  knex('video')
+  knex('pregunta')
     .where('id', id)
     .update(pregunta, 'id')
     .then(()=> {
