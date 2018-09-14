@@ -166,7 +166,7 @@ router.post('/rest/pregunta/agregar/', (req, res) => {
 });
 
 
-/+router.put('/rest/pregunta/editar/:id', (req, res) => {
+/*router.put('/rest/pregunta/editar/:id', (req, res) => {
   let id = req.params.id;
   let pregunta = {
     video_id: req.body.video_id,
