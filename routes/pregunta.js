@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-// create CRUD 
-//https://www.youtube.com/watch?v=WYa47JkZH_U
-//https://knexjs.org/
 const knex = require('../db/knex');
 
 
@@ -123,11 +119,77 @@ function validTodo(pregunta) {
           return true;
 }
 
-
-
 function validId(id) {
   return !isNaN(id);
 }
+
+
+//REST
+
+router.get('/rest/pregunta/', (req, res) => {
+  knex('pregunta')
+    .select()
+    .then(objPreguntas => {
+      res.json(objPreguntas); 
+    });
+});
+
+router.get('/rest/pregunta/:id', (req, res) => {
+  let id=req.params.id;
+  if(id!= undefined) {
+    knex('pregunta')
+    .select()
+    .first()
+    .where('id', id)
+    .then((pregunta)=> {   
+      res.json(pregunta);
+    })
+  }
+});
+
+router.post('/rest/pregunta/agregar/', (req, res) => {
+
+  let pregunta = {
+    video_id: req.body.video_id,
+    contenido: req.body.contenido,
+    url_audio: req.body.url_audio
+  }
+
+  knex('pregunta')
+    .insert(pregunta)
+    .then((pregunta)=> {
+      res.json(pregunta)
+  });
+
+});
+router.put('/rest/pregunta/editar/:id', (req, res) => {
+  let id = req.params.id;
+  let pregunta = {
+    video_id: req.body.video_id,
+    contenido: req.body.contenido,
+    url_audio: req.body.url_audio
+  }
+
+  knex('video')
+    .where('id', id)
+    .update(pregunta, 'id')
+    .then(()=> {
+      res.json(pregunta)
+  });
+});
+
+router.delete('/rest/pregunta/eliminar/:id', (req, res) => {
+  let id = req.params.id; 
+  if(id != undefined) { 
+    knex('pregunta')
+    .del()
+    .where('id', id)
+    .then(()=> { 
+      res.json(id)
+    })
+  }
+});
+
 
 
 

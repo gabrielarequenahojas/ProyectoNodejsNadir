@@ -2,9 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 
-// create CRUD 
-//https://www.youtube.com/watch?v=WYa47JkZH_U
-//https://knexjs.org/
 const knex = require('../db/knex');
 
 
@@ -124,10 +121,74 @@ function validTodo(opcion) {
 }
 
 
-
 function validId(id) {
   return !isNaN(id);
 }
+
+//REST
+router.get('/rest/opcion/', (req, res) => {
+  knex('opcion')
+    .select()
+    .then(objOpcion => {
+      res.json(objOpcion); 
+    });
+});
+
+router.get('/rest/opcion/:id', (req, res) => {
+  let id=req.params.id;
+  if(id!= undefined) {
+    knex('opcion')
+    .select()
+    .first()
+    .where('id', id)
+    .then((opcion)=> {   
+      res.json(opcion);
+    })
+  }
+});
+
+router.post('/rest/opcion/agregar/', (req, res) => {
+
+  let opcion = {
+    pregunta_id: req.body.pregunta_id,
+    url_imagen: req.body.url_imagen,
+    valida: req.body.valida
+  }
+
+  knex('opcion')
+    .insert(opcion)
+    .then((opcion)=> {
+      res.json(opcion)
+  });
+
+});
+router.put('/rest/opcion/editar/:id', (req, res) => {
+  let id = req.params.id;
+  let pregunta = {
+    pregunta_id: req.body.pregunta_id,
+    url_imagen: req.body.url_imagen,
+    valida: req.body.valida
+  }
+
+  knex('opcion')
+    .where('id', id)
+    .update(opcion, 'id')
+    .then(()=> {
+      res.json(opcion)
+  });
+});
+
+router.delete('/rest/opcion/eliminar/:id', (req, res) => {
+  let id = req.params.id; 
+  if(id != undefined) { 
+    knex('opcion')
+    .del()
+    .where('id', id)
+    .then(()=> { 
+      res.json(id)
+    })
+  }
+});
 
 
 

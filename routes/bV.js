@@ -11,7 +11,7 @@ router.get('/', function(req,res){
 });
 
 function respondAndRenderVideo(id,res,viewName){  
-  alert('aaaaaaaaa');
+  
   if(typeof id != 'undefined'){
     knex('video')
       .select()
@@ -33,7 +33,7 @@ function respondAndRenderVideo(id,res,viewName){
 
 // router read show /user/id 
 router.get('/aulaVideo/:id', (req, res) => {
-  console.log("aquiiii");
+  //console.log("aquiiii");
   const id = req.params.id;
   respondAndRenderVideo(id,res,'/aulaVideo'); 
 });

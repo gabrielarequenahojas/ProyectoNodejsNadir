@@ -2,21 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 
-// create CRUD 
-//https://www.youtube.com/watch?v=WYa47JkZH_U
-//https://knexjs.org/
 const knex = require('../db/knex');
 
 
 router.use(express.static(__dirname + '/public'));
-//routing read database postgrsql
-/*router.get('/', (req, res) => {
-  knex('video')
-    .select()
-    .then(videos =>{
-      res.render('video/index', { title: "VIDEOS", objVideos: videos });
-  });  
-});*/
 
 //routing new + form+ get
 router.get('/new', (req, res) => {

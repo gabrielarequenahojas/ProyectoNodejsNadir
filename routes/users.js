@@ -2,10 +2,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-// create CRUD 
-//https://www.youtube.com/watch?v=WYa47JkZH_U
-//https://knexjs.org/
 const knex = require('../db/knex');
 
 

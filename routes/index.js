@@ -9,8 +9,44 @@ var https = require('http');
 const knex = require('../db/knex');
 
 
-//login route
-router.get('/login', (req, res) => res.render('login', {csrf: 'abc'}));
+var sess;
+
+// route login form
+router.get('/login', function(req, res){
+  res.render('login', { csrf: 'ABCD token' });
+});
+
+router.post('/login', function(req, res){
+    //sess = req.session;
+    var user = req.body.username;
+    var pass = req.body.password;
+    console.log(pass);
+    knex('usuario')
+    .where({ tipo_usuario_id: 1 })
+    .select()
+    .first()
+    .then( usuario => {
+        console.log(usuario.username);
+        if (usuario.username == user && usuario.password == pass){
+          res.render('/administradorVideos', {usuario: usuario});
+        }else{
+          console.log("clave invalida " + pass)
+          //res.render('/login', {csrf: 'ABCD token'});
+        }
+       
+     }); 
+       
+});
+
+router.get('/logout',function(req,res){
+    req.session.destroy(function(err) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
+});
 
 //usa modulos de la libreria fortune.js
 router.get('/about', (req, res) => 
@@ -19,12 +55,15 @@ router.get('/about', (req, res) =>
 
 
 
-//++++++++++++++++++FORMS ++++++++++++++++++++
 
-// route login form
-router.get('/login', function(req, res){
-  res.render('login', { csrf: 'ABCD token' });
-});
+
+
+
+
+
+
+
+
 
 router.get('/usuarios', function(req,res){  
   knex('usuario')
@@ -124,13 +163,13 @@ router.get('/preguntas/:id', (req, res) => {
 
 
 // get data from form in order to save on database
-router.post('/process', function(req, res){
+/*router.post('/process', function(req, res){
   console.log('Form (from querystring): ' + req.query.form);
   console.log('CSRF token (from hidden form field): ' + req.body._csrf);
   console.log('Name (from visible form field): ' + req.body.name);
   console.log('Email (from visible form field): ' + req.body.email);
   res.redirect(303, '/thank-you');
-});
+});*/
 
 
 

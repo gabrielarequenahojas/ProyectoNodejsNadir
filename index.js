@@ -8,7 +8,6 @@ var env = process.env.NODE_ENV || 'development';
 
 //add modules routers
 var routes = require('./routes/index.js');
-
 var users = require('./routes/users.js');
 var video = require('./routes/video.js');
 var tipo_usuario = require('./routes/tipo_usuario.js');
@@ -55,15 +54,10 @@ app.use(express.static(__dirname + '/public'));
 
 // call routers
 app.use('/',routes);
-
 app.use('/usuarios',users_exc);
 app.use('/bibliotecaVideos',bV);
 app.use('/aulaVideo',aV);
 app.use('/preguntas',preg);
-
-
-//app.use('/aulaVideo/..',video);
-
 app.use('/user',users);
 app.use('/video',video);
 app.use('/tipo_usuario',tipo_usuario);
@@ -84,11 +78,11 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 
-app.post('/process', function(req,res){
+/*app.post('/process', function(req,res){
   console.log('formulario:'+ req.query.form);
   console.log('nombre'+ req.body.name);
   console.log('nombre'+ req.body.email);
-});
+});*/
 
 
 function serveStaticFile(res, path, contentType, responseCode) {
