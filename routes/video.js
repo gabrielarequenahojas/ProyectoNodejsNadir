@@ -135,6 +135,14 @@ router.get('/rest/videos/', (req, res) => {
     });
 });
 
+router.get('/rest/videos/listar', (req, res) => {
+  knex('video')
+    .select('titulo')
+    .then(videos => {
+      res.json(videos); 
+    });
+});
+
 router.get('/rest/videos/:id', (req, res) => {
   let id=req.params.id;
   if(id!= undefined) {
