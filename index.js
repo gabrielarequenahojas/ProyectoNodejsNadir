@@ -128,7 +128,8 @@ app.get('/conocenos', function(req, res){
 
 });
 
-/*CREA CUENTA*/
+/*
+CREA CUENTA
 
 app.get('/creaCuenta', function(req, res){
     res.render('creaCuenta');
@@ -136,12 +137,12 @@ app.get('/creaCuenta', function(req, res){
 });
 
 
-/*terminos y Condiciones*/
+/*terminos y Condiciones
 
 app.get('/terminosCondiciones', function(req, res){
     res.render('terminosCondiciones');
 
-});
+});*/
 
 /*administradorVideos*/
 
