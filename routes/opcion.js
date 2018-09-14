@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-
+var bodyParser = require('body-parser');
 const knex = require('../db/knex');
 
-
+router.use(bodyParser.json());
 //routing read database postgrsql
 router.get('/', (req, res) => {
   knex('opcion')
@@ -154,17 +154,18 @@ router.post('/rest/opcion/agregar/', (req, res) => {
     url_imagen: req.body.url_imagen,
     valida: req.body.valida
   }
+  console.log(opcion);
 
   knex('opcion')
     .insert(opcion)
     .then((opcion)=> {
       res.json(opcion)
   });
-
 });
+
 router.put('/rest/opcion/editar/:id', (req, res) => {
   let id = req.params.id;
-  let pregunta = {
+  let opcion = {
     pregunta_id: req.body.pregunta_id,
     url_imagen: req.body.url_imagen,
     valida: req.body.valida
@@ -190,7 +191,4 @@ router.delete('/rest/opcion/eliminar/:id', (req, res) => {
   }
 });
 
-
-
 module.exports = router;
-

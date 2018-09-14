@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-
+var bodyParser = require('body-parser');
 // create CRUD 
 //https://www.youtube.com/watch?v=WYa47JkZH_U
 //https://knexjs.org/
 const knex = require('../db/knex');
 
-
+router.use(bodyParser.json());
 //routing read database postgrsql
 router.get('/', (req, res) => {
   knex('video')
@@ -124,6 +124,76 @@ function validTodo(videos) {
 function validId(id) {
   return !isNaN(id);
 }
+
+
+//REST
+router.get('/rest/videos/', (req, res) => {
+  knex('video')
+    .select()
+    .then(videos => {
+      res.json(videos); 
+    });
+});
+
+router.get('/rest/videos/:id', (req, res) => {
+  let id=req.params.id;
+  if(id!= undefined) {
+    knex('video')
+    .select()
+    .first()
+    .where('id', id)
+    .then((video)=> {   
+      res.json(video);
+    })
+  }
+});
+router.post('/rest/videos/agregar/', (req, res) => {
+
+  let video = {
+    titulo: req.body.titulo,
+    descripcion: req.body.descripcion,
+    creditos: req.body.creditos,
+    url_video: req.body.url_video,
+    url_portada: req.body.url_portada
+  }
+  console.log(video);
+
+  knex('video')
+    .insert(video)
+    .then((video)=> {
+      res.json(video)
+  });
+
+});
+router.put('/rest/videos/editar/:id', (req, res) => {
+  let id = req.params.id;
+  let video = {
+    titulo: req.body.titulo,
+    descripcion: req.body.descripcion,
+    creditos: req.body.creditos,
+    url_video: req.body.url_video,
+    url_portada: req.body.url_portada
+  }
+
+  knex('video')
+    .where('id', id)
+    .update(video, 'id')
+    .then(()=> {
+      res.json(video)
+  });
+});
+
+router.delete('/rest/videos/eliminar/:id', (req, res) => {
+  let id = req.params.id; 
+  if(id != undefined) { 
+    knex('video')
+    .del()
+    .where('id', id)
+    .then(()=> { 
+      res.json(id)
+    })
+  }
+});
 
 
 

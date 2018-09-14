@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
+var bodyParser = require('body-parser');
 const knex = require('../db/knex');
 
-
+router.use(bodyParser.json());
 //routing read database postgrsql
 router.get('/', (req, res) => {
   knex('pregunta')
@@ -155,6 +155,8 @@ router.post('/rest/pregunta/agregar/', (req, res) => {
     url_audio: req.body.url_audio
   }
 
+  console.log(pregunta);
+
   knex('pregunta')
     .insert(pregunta)
     .then((pregunta)=> {
@@ -189,9 +191,6 @@ router.delete('/rest/pregunta/eliminar/:id', (req, res) => {
     })
   }
 });
-
-
-
 
 module.exports = router;
 

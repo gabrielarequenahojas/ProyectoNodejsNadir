@@ -39,6 +39,7 @@ var app = express();
 pg.defaults.ssl = false;
 
 app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
 
 app.disable('x-powered-by');
 

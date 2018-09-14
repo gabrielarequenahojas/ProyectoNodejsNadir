@@ -128,7 +128,7 @@ router.get('/rest/videos/', (req, res) => {
 router.get('/rest/videos/:id', (req, res) => {
   let id=req.params.id;
   if(id!= undefined) {
-    knex('videos')
+    knex('video')
     .select()
     .first()
     .where('id', id)
@@ -137,6 +137,7 @@ router.get('/rest/videos/:id', (req, res) => {
     })
   }
 });
+
 router.post('/rest/videos/agregar/', (req, res) => {
 
   let video = {
@@ -147,7 +148,7 @@ router.post('/rest/videos/agregar/', (req, res) => {
     url_portada: req.body.url_portada
   }
 
-  knex('excursion')
+  knex('video')
     .insert(video)
     .then((video)=> {
       res.json(video)
