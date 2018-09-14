@@ -115,5 +115,75 @@ router.delete('/:id',(req,res)=>{
   }      
 });
 
+//REST
+
+router.get('/rest/videos/', (req, res) => {
+  knex('video')
+    .select()
+    .then(videos => {
+      res.json(videos); 
+    });
+});
+
+router.get('/rest/videos/:id', (req, res) => {
+  let id=req.params.id;
+  if(id!= undefined) {
+    knex('videos')
+    .select()
+    .first()
+    .where('id', id)
+    .then((video)=> {   
+      res.json(video);
+    })
+  }
+});
+router.post('/rest/videos/agregar/', (req, res) => {
+
+  let video = {
+    titulo: req.body.titulo,
+    descripcion: req.body.descripcion,
+    creditos: req.body.creditos,
+    url_video: req.body.url_video,
+    url_portada: req.body.url_portada
+  }
+
+  knex('excursion')
+    .insert(video)
+    .then((video)=> {
+      res.json(video)
+  });
+
+});
+router.put('/rest/videos/editar/:id', (req, res) => {
+  let id = req.params.id;
+  let video = {
+    titulo: req.body.titulo,
+    descripcion: req.body.descripcion,
+    creditos: req.body.creditos,
+    url_video: req.body.url_video,
+    url_portada: req.body.url_portada
+  }
+
+  knex('video')
+    .where('id', id)
+    .update(video, 'id')
+    .then(()=> {
+      res.json(video)
+  });
+});
+
+router.delete('/rest/videos/eliminar/:id', (req, res) => {
+  let id = req.params.id; 
+  if(id != undefined) { 
+    knex('video')
+    .del()
+    .where('id', id)
+    .then(()=> { 
+      res.json(id)
+    })
+  }
+});
+
+
 
 module.exports = router;
