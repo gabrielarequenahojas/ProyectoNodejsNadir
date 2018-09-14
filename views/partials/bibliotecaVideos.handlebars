@@ -1,8 +1,10 @@
 
 {{#section 'head'}}
  <link rel="stylesheet" href="css/cssNavegador.css"> 
+   <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 	<script type="text/javascript"  src="js/bootstrap.min.js"></script>
-	<script type="text/javascript"  src="js/bibliotecaVideos.js"></script>
+	
+
 {{/section}}
 
 <audio src="recursos/audios/sonido_aulavideo.mp3" autoplay="true"></audio>
@@ -10,16 +12,15 @@
 <h1><center>SELECCIONA UN VIDEO</center></h1>
 <br>
 
-    <div id="portadas">
+    <div  class="padre" id="portadas">
      	{{#each objVideos}}  
-        <div class='padre'>
-          <div class='hijo'>
+       
+          <div class="hijo">
             <a type="button" id='{{id}}' href='/aulaVideo/{{id}}'> 
-                <center><img class='imagen'  width="400" height="250"  src='{{url_portada}}' alt='{{url_portada}}'> </center>
+                <img class='imagen'  width="400" height="250"  src='{{url_portada}}' alt='{{url_portada}}'>
             </a>
           </div>
-        </div>}
-        <br>
+       
   		{{/each}}            
     </div>    
   

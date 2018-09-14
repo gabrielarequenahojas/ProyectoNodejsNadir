@@ -1,4 +1,14 @@
-<h1> SELECCIONA LA OPCION CORRECTA </h1>
+
+{{#section 'head'}}
+	<link rel="stylesheet" href="css/cssNavegador.css"> 
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+
+{{/section}}
+
+
+<center><h1> SELECCIONA LA OPCI&Oacute;N CORRECTA </h1></center>
 
 
 <audio src="recursos/audios/pregunta_1_1.mp3" autoplay="true"></audio>
@@ -6,14 +16,25 @@
 <audio id="ganar" src="recursos/audios/ganar.mp3"></audio>   
 <audio id="perder" src="recursos/audios/perder.mp3"></audio> 
 
-<div class="col-md-12 col-md-offset-2 ">         
-    <div id="opciones">
+
+
+
+
+<div class="padre">         
+  
     
        	{{#each objOpciones}}        	       	   
-          <div class='responsive'><div class='gallery'><button id='{{valida}}' onClick="validarOpcion(this.id)"> <img class='imagen' src='{{url_imagen}}' alt='{{url_imagen}}'></button></div></div>          
+         
+          <div class="hijo">
+          <button id='{{valida}}' onClick="validarOpcion(this.id)">
+          <img class='imagen' src='{{url_imagen}}' alt='{{url_imagen}}'>
+          </button>
+          </div>
+                 
   		{{/each}}            
-    </div>    
+     
   </div>
+
 <script>
 	function validarOpcion(tipo){
 		//alert(tipo);
@@ -32,8 +53,7 @@
 
 	function resaltar(){
 		document.getElementById("1").style.border="thick solid green";
-		document.getElementById("0").style.border="thick solid red";
-	}
-	}
+		document.getElementById("O").style.border="thick solid red";
 	
+	}	
 </script>

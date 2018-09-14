@@ -49,7 +49,7 @@ router.put('/:id',(req,res) => {
 
       .update({
       pregunta_id: req.body.pregunta_id,
-       id_imagen: req.body.id_imagen, 
+       url_imagen: req.body.url_imagen, 
        valida: req.body.valida
   
     } )
@@ -85,7 +85,7 @@ function validateTodoRenderError(req, res, callback) {
     //alert(validTodo(req.body));
     const opcion = {
       pregunta_id: req.body.pregunta_id,
-       id_imagen: req.body.id_imagen, 
+       url_imagen: req.body.url_imagen, 
        valida: req.body.valida
     };
     callback(opcion);

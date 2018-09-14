@@ -1,5 +1,6 @@
  {{#section 'head'}}
 
+
  <link rel="stylesheet" href="css/cssNavegador.css"> 
 
 <link rel="stylesheet" href="css/bienvenidos.css" />
@@ -8,7 +9,6 @@
 	<script type="text/javascript"  src="js/bibliotecaVideos.js"></script>
 {{/section}}
 
-<h1><center>SELECCIONA UN VIDEO</center></h1>
 
  <div class = "oculta" >
 <h1> id : {{video.id}}</h1>
@@ -18,7 +18,7 @@
 
 
 <div id="video" class="">
-<div id="" class="">
+
 <script>
 	
 	var urlVideo = document.getElementById("url").innerHTML;
@@ -31,6 +31,8 @@
     document.getElementById("video").innerHTML=cadena;
 </script>
 </div>
-</div>
-<a type="button" id='{{video.id}}' href='/preguntas/{{video.id}}'>ACTIVIDAD</a>
+
+
+<div id="preguntas"> <center><a href='/preguntas/{{video.id}}' id='{{video.id}}' class="flotante"><img src="recursos/imagenes/boton.png"></a></center></div>
+
 
