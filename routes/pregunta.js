@@ -164,6 +164,24 @@ router.post('/rest/pregunta/agregar/', (req, res) => {
   });
 
 });
+
+
+/+router.put('/rest/pregunta/editar/:id', (req, res) => {
+  let id = req.params.id;
+  let pregunta = {
+    video_id: req.body.video_id,
+    contenido: req.body.contenido,
+    url_audio: req.body.url_audio
+  }
+
+  knex('pregunta')
+    .where('id', id)
+    .update(pregunta, 'id')
+    .then(()=> {
+      res.json(pregunta)
+  });
+});*/
+
 router.put('/rest/pregunta/editar/:id', (req, res) => {
   let id = req.params.id;
   let pregunta = {
