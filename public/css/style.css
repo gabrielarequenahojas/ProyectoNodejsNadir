@@ -858,6 +858,8 @@ a:hover + div {
   position: fixed;
   bottom: 320px;
   right: 0px;
+  width: 150px;
+  height: 150px;
 }
 
 iframe{
