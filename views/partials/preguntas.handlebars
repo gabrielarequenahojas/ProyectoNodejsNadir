@@ -8,15 +8,16 @@
 {{/section}}
 
 
-<center><h1> SELECCIONA LA OPCI&Oacute;N CORRECTA </h1></center>
+<center><h1> ESCOGE LA OPCI&Oacute;N CORRECTA </h1></center>
 
+<p>{{pregunta.contenido}}</p>
 
-<audio src="recursos/audios/pregunta_1_1.mp3" autoplay="true"></audio>
+<audio src="{{pregunta.url_audio}}" autoplay="true"></audio>
 
 <audio id="ganar" src="recursos/audios/ganar.mp3"></audio>   
 <audio id="perder" src="recursos/audios/perder.mp3"></audio> 
 
-
+{{objOpciones.length}}
 
 
 
@@ -27,7 +28,7 @@
          
           <div class="hijo">
           <button id='{{valida}}' onClick="validarOpcion(this.id)">
-          <img class='imagen' src='{{url_imagen}}' alt='{{url_imagen}}'>
+          <img class='imagen' width="400" height="250" src='{{url_imagen}}' alt='{{url_imagen}}'>
           </button>
           </div>
                  
@@ -37,23 +38,24 @@
 
 <script>
 	function validarOpcion(tipo){
-		//alert(tipo);
 		if(tipo == 1){
-	        alert("¡¡¡¡FELICIDADES!!!!");
+	        //alert("¡¡¡¡FELICIDADES!!!!");
 	        var r = document.getElementById("ganar");	                
 	        aud = r.play();
+	        setTimeout ("var win= window.location.href='bibliotecaVideos';", 4000);
 	                                
 	    }else{
-	        alert("¡¡¡¡RESPUESTA INCORRECTA!!!!");
+	        //alert("¡¡¡¡RESPUESTA INCORRECTA!!!!");
 	        var s = document.getElementById("perder");
 	        aud = s.play();
-	        resaltar();	                
+	        resaltar();	                    
 	    }
 	}
 
 	function resaltar(){
 		document.getElementById("1").style.border="thick solid green";
-		document.getElementById("O").style.border="thick solid red";
-	
-	}	
+		setTimeout ("var win= window.location.href='bibliotecaVideos';", 5000);   
+	}
+
+
 </script>

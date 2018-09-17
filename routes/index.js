@@ -156,7 +156,7 @@ router.get('/preguntas/:id', (req, res) => {
       .where({pregunta_id: id_p})        
       .then(objCollectOpciones => {
       console.log("parte 2 :" + id_p);
-        res.render('partials/preguntas', {objOpciones: objCollectOpciones});
+        res.render('partials/preguntas', {objOpciones: objCollectOpciones, pregunta: preguntas});
       });  }); 
 });
 
